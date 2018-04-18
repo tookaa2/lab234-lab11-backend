@@ -1,0 +1,8 @@
+graphql:
+  servlet:
+    corsEnabled: true
+    enabled: true
+spring:
+  profiles:
+    active:
+      - local
