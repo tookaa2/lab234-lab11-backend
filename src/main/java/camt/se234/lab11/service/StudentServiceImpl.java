@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
                 return student;
             }
         }
-        return null;
+        throw new NoDataException();
     }
 
     @Override
@@ -32,6 +32,9 @@ public class StudentServiceImpl implements StudentService {
             if (student.getStudentId().indexOf(id) != -1){
                 output.add(student);
             }
+        }
+        if(output.size()==0){
+            throw new NoDataException();
         }
         return output;
     }
@@ -45,6 +48,11 @@ public class StudentServiceImpl implements StudentService {
             total += student.getGpa();
 
         }
+        if(studentDao.findAll().size()==0){
+            throw new ArithmeticException();
+        }
         return total/this.studentDao.findAll().size();
     }
+
+
 }
